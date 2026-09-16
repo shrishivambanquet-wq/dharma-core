@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from uuid import uuid4
-from datetime import datetime
+from datetime import datetime, timezone
 
 from .enums import AuthorityKind, AuthorityStatus
 
@@ -9,6 +9,8 @@ class AuthorityNode:
     kind: AuthorityKind
     name: str
     id: str = field(default_factory=lambda: str(uuid4()))
-    created_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
+    created_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     status: AuthorityStatus = AuthorityStatus.ACTIVE
     metadata: dict = field(default_factory=dict)
+
+
