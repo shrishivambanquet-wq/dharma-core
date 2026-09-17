@@ -4,21 +4,25 @@ class AuthorityResolver:
     def __init__(self, graph: AuthorityGraph):
         self.graph = graph
 
-    def can_reach(self, source_id, target_id):
-        visited = set()
-        stack = [source_id]
+    def can_reach(self, source_id: str, target_id: str) -> bool:
+        if source_id == target_id:
+            return True
 
-        while stack:
-            current = stack.pop()
-            if current == target_id:
-                return True
+        visited = set()
+        queue = [source_id]
+
+        while queue:
+            current = queue.pop(0)
 
             if current in visited:
                 continue
 
             visited.add(current)
 
-            for edge in self.graph.outgoing(current):
-                stack.append(edge.target.id)
+            for neighbor in self.graph.neighbors(current):
+                if neighbor == target_id:
+                    return True
+                queue.append(neighbor)
 
         return False
+
