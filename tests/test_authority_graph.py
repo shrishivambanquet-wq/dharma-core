@@ -1,4 +1,27 @@
 from dharma.authority.graph import AuthorityGraph
+from dharma.authority.authority_graph import AuthorityGraph
+
+def test_add_authority():
+    g = AuthorityGraph()
+    g.add_authority("root")
+    assert g.exists("root")
+
+def test_connect():
+    g = AuthorityGraph()
+    g.connect("root", "alice")
+    assert "alice" in g.children("root")
+
+def test_children_sorted():
+    g = AuthorityGraph()
+    g.connect("root", "bob")
+    g.connect("root", "alice")
+    assert g.children("root") == ["alice", "bob"]
+
+def test_missing_children():
+    assert AuthorityGraph().children("x") == []
+
+def test_exists_false():
+    assert not AuthorityGraph().exists("ghost")
 from dharma.authority.node import AuthorityNode
 from dharma.authority.edge import AuthorityEdge
 from dharma.authority.enums import AuthorityKind
