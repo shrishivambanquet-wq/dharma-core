@@ -1,4 +1,8 @@
+import json
+from pathlib import Path
+
 from .node import AuthorityNode
+from .enums import AuthorityKind
 
 
 class AuthorityRegistry:
@@ -20,3 +24,34 @@ class AuthorityRegistry:
 
     def count(self):
         return len(self._authorities)
+
+    def save(self, path):
+        path = Path(path)
+        data = [
+            {
+                "id": a.id,
+                "name": a.name,
+                "kind": a.kind.name,
+            }
+            for a in self._authorities.values()
+        ]
+        path.write_text(json.dumps(data, indent=2))
+
+    def load(self, path):
+        path = Path(path)
+
+        if not path.exists():
+            self._authorities = {}
+            return
+
+        data = json.loads(path.read_text())
+        self._authorities = {}
+
+        for item in data:
+            self.register(
+                AuthorityNode(
+                    AuthorityKind[item["kind"]],
+                    item["name"],
+                    id=item["id"],
+                )
+            )
