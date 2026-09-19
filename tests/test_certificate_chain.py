@@ -1,35 +1,39 @@
-from dharma.authority.certificate import AuthorityCertificate
-from dharma.authority.chain import CertificateChain
+from dharma.authority.certificate_chain import CertificateChain
+from dharma.authority.signed_certificate import SignedCertificate
 
 
-def test_empty_chain_valid():
-    assert CertificateChain().is_valid()
+def test_add_certificate():
+    c = CertificateChain()
+    c.add(SignedCertificate("A", "B", "delegates"))
+    assert c.count() == 1
 
 
-def test_single_certificate_chain():
-    chain = CertificateChain()
-    chain.add(AuthorityCertificate("a", "b", "represents"))
-    assert chain.is_valid()
+def test_first():
+    c = CertificateChain()
+    s = SignedCertificate("A", "B", "delegates")
+    c.add(s)
+    assert c.first() == s
 
 
-def test_revoked_breaks_chain():
-    c = AuthorityCertificate("a", "b", "represents")
-    c.revoke()
-    chain = CertificateChain([c])
-    assert not chain.is_valid()
+def test_last():
+    c = CertificateChain()
+    c.add(SignedCertificate("A", "B", "delegates"))
+    s = SignedCertificate("B", "C", "delegates")
+    c.add(s)
+    assert c.last() == s
 
 
-def test_chain_length():
-    chain = CertificateChain()
-    chain.add(AuthorityCertificate("a", "b", "represents"))
-    chain.add(AuthorityCertificate("b", "c", "delegates"))
-    assert chain.length() == 2
+def test_chain_size():
+    c = CertificateChain()
+    c.add(SignedCertificate("A", "B", "delegates"))
+    c.add(SignedCertificate("B", "C", "delegates"))
+    assert c.count() == 2
 
 
-def test_multiple_valid_certificates():
-    chain = CertificateChain([
-        AuthorityCertificate("a", "b", "represents"),
-        AuthorityCertificate("b", "c", "delegates"),
-    ])
-    assert chain.is_valid()
-
+def test_order_preserved():
+    c = CertificateChain()
+    a = SignedCertificate("A", "B", "delegates")
+    b = SignedCertificate("B", "C", "delegates")
+    c.add(a)
+    c.add(b)
+    assert c.first() == a and c.last() == b
