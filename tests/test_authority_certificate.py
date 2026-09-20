@@ -1,22 +1,50 @@
-from dharma.authority.certificate import AuthorityCertificate
+from dharma.network.authority_certificate import AuthorityCertificate
+import time
 
-def test_certificate_has_uuid():
-    c = AuthorityCertificate("issuer", "subject", "represents")
-    assert len(c.certificate_id) > 0
+def test_node():
+    c=AuthorityCertificate("A","pk").issue()
+    assert c["node"]=="A"
 
-def test_certificate_has_timestamp():
-    c = AuthorityCertificate("issuer", "subject", "represents")
-    assert "T" in c.issued_at
+def test_key():
+    c=AuthorityCertificate("A","pk").issue()
+    assert c["public_key"]=="pk"
 
-def test_certificate_default_active():
-    c = AuthorityCertificate("issuer", "subject", "represents")
-    assert c.revoked is False
+def test_issue():
+    c=AuthorityCertificate("A","pk").issue()
+    assert c["issued_at"]>0
 
-def test_certificate_revokes():
-    c = AuthorityCertificate("issuer", "subject", "represents")
-    c.revoke()
-    assert c.revoked is True
+def test_expiry():
+    c=AuthorityCertificate("A","pk",10).issue()
+    assert c["expires_at"]==c["issued_at"]+10
 
-def test_certificate_keeps_purpose():
-    c = AuthorityCertificate("issuer", "subject", "represents")
-    assert c.purpose == "represents"
+def test_valid():
+    c=AuthorityCertificate("A","pk",10).issue()
+    assert AuthorityCertificate.valid(c,c["issued_at"]+5)
+
+def test_expired():
+    c=AuthorityCertificate("A","pk",1).issue()
+    assert not AuthorityCertificate.valid(c,c["issued_at"]+2)
+
+def test_zero_ttl():
+    c=AuthorityCertificate("A","pk",0).issue()
+    assert AuthorityCertificate.valid(c,c["issued_at"])
+
+def test_many():
+    for i in range(5):
+        AuthorityCertificate(str(i),"pk").issue()
+
+def test_public():
+    assert AuthorityCertificate("A","PUB").issue()["public_key"]=="PUB"
+
+def test_repeat():
+    a=AuthorityCertificate("A","pk").issue()
+    b=AuthorityCertificate("A","pk").issue()
+    assert a["node"]==b["node"]
+
+def test_future():
+    c=AuthorityCertificate("A","pk",100).issue()
+    assert AuthorityCertificate.valid(c,c["issued_at"]+99)
+
+def test_fields():
+    c=AuthorityCertificate("A","pk").issue()
+    assert set(c.keys())=={"node","public_key","issued_at","expires_at"}

@@ -1,21 +1,40 @@
 from dharma.network.compatibility import Compatibility
 
+A = {
+    "protocol":"0.2.0-alpha",
+    "features":["wire","heartbeat","routing"]
+}
 
-def test_same_version():
-    assert Compatibility().supports("0.1")
+B = {
+    "protocol":"0.2.0-alpha",
+    "features":["wire","heartbeat","fragmentation"]
+}
 
+def test_protocol():
+    assert Compatibility.negotiate(A,B)["protocol"]=="0.2.0-alpha"
 
-def test_wrong_version():
-    assert not Compatibility().supports("0.2")
+def test_shared():
+    assert Compatibility.negotiate(A,B)["shared"]==["heartbeat","wire"]
 
+def test_same():
+    assert Compatibility.negotiate(A,A)["shared"]
 
-def test_negotiate_success():
-    assert Compatibility().negotiate("0.1") == "0.1"
+def test_empty():
+    x={"protocol":"0.2.0-alpha","features":[]}
+    assert Compatibility.negotiate(x,x)["shared"]==[]
 
+def test_mismatch():
+    y={"protocol":"0.3","features":["wire"]}
+    assert Compatibility.negotiate(A,y) is None
 
-def test_negotiate_fail():
-    assert Compatibility().negotiate("9.9") is None
+def test_one_feature():
+    x={"protocol":"0.2.0-alpha","features":["wire"]}
+    assert Compatibility.negotiate(A,x)["shared"]==["wire"]
 
+def test_sorted():
+    x={"protocol":"0.2.0-alpha","features":["wire","heartbeat"]}
+    assert Compatibility.negotiate(A,x)["shared"]==["heartbeat","wire"]
 
-def test_local_version():
-    assert Compatibility().local_version == "0.1"
+def test_duplicate():
+    x={"protocol":"0.2.0-alpha","features":["wire","wire"]}
+    assert Compatibility.negotiate(A,x)["shared"]==["wire"]
