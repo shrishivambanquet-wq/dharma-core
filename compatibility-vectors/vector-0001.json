@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "message_type": 2,
+  "payload": {
+    "node": "A",
+    "message": "hello"
+  },
+  "expected_hex": "010200217b226d657373616765223a202268656c6c6f222c20226e6f6465223a202241227d"
+}

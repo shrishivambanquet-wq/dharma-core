@@ -1,6 +1,6 @@
 from dharma.network.ed25519 import Ed25519Identity
 from dharma.network.key_exchange import KeyExchange
-from dharma.network.handshake import TrustHandshake
+from dharma.network.trust_handshake import TrustHandshake
 
 
 def make():
