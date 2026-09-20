@@ -1,24 +1,20 @@
 from dataclasses import dataclass
-
-from .key_exchange import KeyExchange
-
+import secrets
 
 @dataclass
-class TrustHandshake:
-    local: KeyExchange
-    remote: KeyExchange
+class Handshake:
+    local_nonce: str = ""
+    remote_nonce: str | None = None
 
     def hello(self):
-        return {
-            "type": "hello",
-            "public_key": self.local.public_key(),
-        }
+        self.local_nonce = secrets.token_hex(16)
+        return {"type": "hello", "nonce": self.local_nonce}
 
-    def accept(self):
-        return {
-            "type": "accept",
-            "public_key": self.remote.public_key(),
-        }
+    def accept(self, remote_nonce):
+        if remote_nonce == self.local_nonce:
+            raise ValueError("nonce reuse")
+        self.remote_nonce = remote_nonce
+        return {"type": "accept", "nonce": secrets.token_hex(16)}
 
     def established(self):
-        return self.hello()["public_key"] != self.accept()["public_key"]
+        return self.local_nonce != "" and self.remote_nonce is not None

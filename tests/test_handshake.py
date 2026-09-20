@@ -1,33 +1,39 @@
-from dharma.network.ed25519 import Ed25519Identity
-from dharma.network.key_exchange import KeyExchange
-from dharma.network.handshake import TrustHandshake
-
-
-def make():
-    return TrustHandshake(
-        KeyExchange(Ed25519Identity.create()),
-        KeyExchange(Ed25519Identity.create()),
-    )
-
+import pytest
+from dharma.network.handshake import Handshake
 
 def test_hello():
-    assert make().hello()["type"] == "hello"
+    assert Handshake().hello()["type"] == "hello"
 
+def test_nonce_exists():
+    assert Handshake().hello()["nonce"] != ""
 
 def test_accept():
-    assert make().accept()["type"] == "accept"
+    h = Handshake()
+    h.hello()
+    assert h.accept("abcd")["type"] == "accept"
 
+def test_store_remote():
+    h = Handshake()
+    h.hello()
+    h.accept("abcd")
+    assert h.remote_nonce == "abcd"
 
 def test_established():
-    assert make().established()
+    h = Handshake()
+    h.hello()
+    h.accept("abcd")
+    assert h.established()
 
+def test_nonce_reuse():
+    h = Handshake()
+    n = h.hello()["nonce"]
+    with pytest.raises(ValueError):
+        h.accept(n)
 
-def test_keys_exist():
-    h = make()
-    assert h.hello()["public_key"]
-    assert h.accept()["public_key"]
+def test_two_instances():
+    assert Handshake().hello()["nonce"] != Handshake().hello()["nonce"]
 
-
-def test_keys_are_different():
-    h = make()
-    assert h.hello()["public_key"] != h.accept()["public_key"]
+def test_accept_nonce():
+    h = Handshake()
+    h.hello()
+    assert h.accept("xyz")["nonce"] != ""
