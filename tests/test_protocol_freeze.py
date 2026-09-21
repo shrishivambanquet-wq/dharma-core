@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.protocol_freeze import ProtocolFreeze
 def test_default():
  p=ProtocolFreeze(); assert not p.status()

@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class FederationCoordinator:
     def __init__(self):
         self.members=set()

@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.federation_state import FederationState
 
 def test_join():

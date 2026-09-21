@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from nacl.signing import SigningKey, VerifyKey
 from nacl.encoding import HexEncoder
 

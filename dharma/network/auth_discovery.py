@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dataclasses import dataclass, field
 
 from .route_announcement import RouteAnnouncement

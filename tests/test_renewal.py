@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.renewal import SessionRenewal
 from dharma.network.token import SessionToken
 

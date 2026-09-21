@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 import time
 from dharma.network.chain_validation import CertificateChain
 from dharma.network.federation_certificate import FederationCertificate

@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.trust_verification import TrustVerification
 from dharma.network.trust_anchor import TrustAnchor
 def test_verify():

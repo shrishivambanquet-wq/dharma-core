@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from .event_bus import EventBus
 from .event_subscription import EventSubscription
 from .event_replay import EventReplay

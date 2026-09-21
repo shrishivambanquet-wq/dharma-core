@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 
 from dharma.authority.trust_resolver import TrustResolver
 from dharma.authority.trust_score import TrustScore

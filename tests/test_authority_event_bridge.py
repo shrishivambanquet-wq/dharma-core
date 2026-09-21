@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.authority_event_bridge import AuthorityEventBridge
 
 def test_grant():

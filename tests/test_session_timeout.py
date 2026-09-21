@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 import time
 from dharma.network.session_timeout import SessionTimeout
 

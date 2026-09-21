@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.auth_discovery import AuthDiscoveryRegistry
 from dharma.network.federation_sync import FederationSync
 

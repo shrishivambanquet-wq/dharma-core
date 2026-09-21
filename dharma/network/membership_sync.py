@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class MembershipSync:
     def merge(self,a,b):
         return sorted(set(a)|set(b))

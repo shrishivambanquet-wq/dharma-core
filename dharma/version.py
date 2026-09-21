@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 VERSION = "0.2.0-alpha"
 
 PROTOCOL = {

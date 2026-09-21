@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.authority.delegation_proof import DelegationProof
 from dharma.authority.certificate_chain import CertificateChain
 from dharma.authority.signed_certificate import SignedCertificate

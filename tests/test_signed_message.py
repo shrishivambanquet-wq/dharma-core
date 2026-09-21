@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.dcp import DCPMessage
 from dharma.network.identity import NodeIdentity
 from dharma.network.signed_message import SignedMessage

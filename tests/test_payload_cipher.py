@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.payload_cipher import PayloadCipher
 
 KEY = "demo-session-key"

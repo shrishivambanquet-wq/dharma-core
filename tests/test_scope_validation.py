@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.scope_validation import ScopeValidation
 def test_ok():
  s=ScopeValidation();assert s.allowed({"read"},"read")

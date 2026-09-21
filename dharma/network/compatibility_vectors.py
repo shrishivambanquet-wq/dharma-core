@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class CompatibilityVectors:
     def compatible(self,a,b):
         return a["protocol"]==b["protocol"]

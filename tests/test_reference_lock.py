@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.reference_lock import ReferenceLock
 def test_lock():
  r=ReferenceLock(); r.lock("1"); assert r.current()=="1"

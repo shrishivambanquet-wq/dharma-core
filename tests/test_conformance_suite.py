@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.conformance_suite import ConformanceSuite
 c=ConformanceSuite()
 def test_all(): assert c.run([1,1])

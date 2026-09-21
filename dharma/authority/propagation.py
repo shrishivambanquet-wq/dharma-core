@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dataclasses import dataclass
 
 from .authority_graph import AuthorityGraph

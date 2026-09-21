@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class DharmaError(Exception):
     def __init__(self, code, message):
         self.code = code

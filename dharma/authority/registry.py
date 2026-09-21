@@ -1,3 +1,14 @@
+"""
+DRFC-0058
+Canonical Module
+"""
+
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 import json
 from pathlib import Path
 

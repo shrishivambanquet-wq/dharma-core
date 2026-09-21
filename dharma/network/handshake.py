@@ -1,3 +1,14 @@
+"""
+DRFC-0031
+Canonical Module
+"""
+
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dataclasses import dataclass
 import secrets
 
