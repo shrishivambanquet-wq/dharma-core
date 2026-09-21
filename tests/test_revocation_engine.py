@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.authority.certificate import AuthorityCertificate
 from dharma.authority.revocation_engine import RevocationEngine
 

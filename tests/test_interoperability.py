@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.interoperability import DharmaNode
 from dharma.network.replay_guard import ReplayGuard, ReplayPacket
 

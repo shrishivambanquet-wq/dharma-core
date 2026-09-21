@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 PACKET_MODES = {
     1:"GRANT",
     2:"DELEGATE",

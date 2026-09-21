@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from .node import AuthorityNode
 from .edge import AuthorityEdge
 

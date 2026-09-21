@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.dharma_core_foundation import DharmaCoreFoundation
 d=DharmaCoreFoundation()
 def test_version(): assert d.version()=="1.0.0-rc1"

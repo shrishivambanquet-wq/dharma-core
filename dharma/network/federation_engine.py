@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from .federation_join import FederationJoin
 from .federation_leave import FederationLeave
 from .federation_coordinator import FederationCoordinator

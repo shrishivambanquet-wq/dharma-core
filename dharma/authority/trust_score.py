@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class TrustScore:
     def __init__(self, value=0.0):
         self.value = max(0.0, min(1.0, value))

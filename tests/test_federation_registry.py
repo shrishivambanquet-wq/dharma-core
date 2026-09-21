@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.federation.node import FederationNode
 from dharma.federation.registry import FederationRegistry
 

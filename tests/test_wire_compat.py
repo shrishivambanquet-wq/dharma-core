@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 import pytest
 from dharma.network.wire import WireMessage
 from dharma.network.wire_compat import WireCompatibility

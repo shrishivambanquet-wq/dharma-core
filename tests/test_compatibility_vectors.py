@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.compatibility_vectors import CompatibilityVectors
 v=CompatibilityVectors()
 A={"protocol":"1","features":["a","b"]}

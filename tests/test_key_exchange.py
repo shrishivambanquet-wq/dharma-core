@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.ed25519 import Ed25519Identity
 from dharma.network.key_exchange import KeyExchange
 

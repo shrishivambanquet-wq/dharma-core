@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.delegation_chain import DelegationChain
 def test_delegate():
  c=DelegationChain();c.delegate("A","B");assert c.parent("B")=="A"

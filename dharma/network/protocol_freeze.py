@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 class ProtocolFreeze:
     def __init__(self):
         self.frozen=False

@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from pathlib import Path
 
 from dharma.authority.registry import AuthorityRegistry

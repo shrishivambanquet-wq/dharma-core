@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.authority.authority_index import AuthorityIndex
 from dharma.authority.query import AuthorityQuery
 from dharma.authority.node import AuthorityNode

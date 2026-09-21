@@ -1,3 +1,9 @@
+"""
+Dharma Protocol
+Canonical DRFC Reference
+Status: Traceability Pending
+"""
+
 from dharma.network.certificate_registry import CertificateRegistry
 
 CERT={"node":"A","public_key":"pk","issued_at":1,"expires_at":100}
