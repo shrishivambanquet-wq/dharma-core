@@ -1,22 +1,26 @@
 # Dharma Packet Format v2
 
-Header:
-- version
-- type
-- session
-- node
-- timestamp
-- nonce
-- payload_length
-- signature
+## Header
 
-Rules:
+| Field | Required |
+|--------|----------|
+|version|Yes|
+|type|Yes|
+|session|Yes|
+|node|Yes|
+|timestamp|Yes|
+|nonce|Yes|
+|payload_length|Yes|
+|signature|Yes|
+
+## Payload Rules
+
 - Maximum payload: 64 KiB.
+- `payload_length` MUST equal the transmitted payload.
 - Unknown fields MUST be ignored.
 - Missing required fields MUST reject the packet.
-- Packet length MUST match payload_length.
 
-Handshake Example:
+## Example
 
 {
  "version":"2.0",
