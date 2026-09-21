@@ -1,8 +1,15 @@
-[project]
-name="dharma-core"
-version="1.0.0"
-description="Reference implementation of the Dharma Protocol"
-requires-python=">=3.11"
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[tool.pytest.ini_options]
-testpaths=["tests"]
+[project]
+name = "dharma-protocol"
+version = "1.0.0rc1"
+description = "Verifiable delegation protocol for humans, AI and institutions."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{name = "Dharma Contributors"}]
+
+[tool.setuptools.packages.find]
+include = ["dharma*"]
