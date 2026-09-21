@@ -1,19 +1,21 @@
 from dataclasses import dataclass
-import time
-
 
 @dataclass
 class SessionResume:
     session_id: str
-    last_seen: float = None
+    _active: bool = True
 
-    def __post_init__(self):
-        if self.last_seen is None:
-            self.last_seen = time.time()
+    def interrupt(self):
+        self._active = False
 
-    def resume(self):
-        self.last_seen = time.time()
+    def resume(self, session_id=None):
+        if session_id is not None and session_id != self.session_id:
+            return False
+        self._active = True
         return True
 
     def active(self):
-        return self.last_seen > 0
+        return self._active
+
+    def state(self):
+        return "ACTIVE" if self._active else "INTERRUPTED"

@@ -1,33 +1,51 @@
-from dharma.authority.audit_log import AuditLog
-from dharma.authority.audit_event import AuditEvent
+from dharma.network.audit_log import AuditLog
 
+def test_record():
+    l=AuditLog()
+    assert l.record("A","join")["actor"]=="A"
 
-def test_append():
-    log = AuditLog()
-    log.append(AuditEvent("A", "create"))
-    assert log.count() == 1
+def test_action():
+    l=AuditLog()
+    assert l.record("A","join")["action"]=="join"
 
+def test_target():
+    l=AuditLog()
+    assert l.record("A","grant","B")["target"]=="B"
 
-def test_last():
-    log = AuditLog()
-    e = AuditEvent("A", "create")
-    log.append(e)
-    assert log.last() == e
+def test_latest():
+    l=AuditLog()
+    l.record("A","join")
+    assert l.latest()["action"]=="join"
 
+def test_count():
+    l=AuditLog()
+    l.record("A","join"); l.record("B","leave")
+    assert l.count()==2
 
-def test_filter_authority():
-    log = AuditLog()
-    log.append(AuditEvent("A", "create"))
-    log.append(AuditEvent("B", "create"))
-    assert len(log.by_authority("A")) == 1
+def test_empty():
+    assert AuditLog().latest() is None
 
+def test_timestamp():
+    assert AuditLog().record("A","join")["timestamp"]>0
 
-def test_empty_last():
-    assert AuditLog().last() is None
+def test_all():
+    l=AuditLog()
+    l.record("A","join")
+    assert len(l.all())==1
 
+def test_order():
+    l=AuditLog()
+    l.record("A","one"); l.record("A","two")
+    assert l.all()[0]["action"]=="one"
 
-def test_append_order():
-    log = AuditLog()
-    log.append(AuditEvent("A", "create"))
-    log.append(AuditEvent("A", "revoke"))
-    assert log.last().event == "revoke"
+def test_many():
+    l=AuditLog()
+    [l.record("A",str(i)) for i in range(5)]
+    assert l.count()==5
+
+def test_none_target():
+    assert AuditLog().record("A","join")["target"] is None
+
+def test_keys():
+    e=AuditLog().record("A","join")
+    assert set(e.keys())=={"timestamp","actor","action","target"}

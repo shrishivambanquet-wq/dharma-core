@@ -1,31 +1,27 @@
-from dharma.network.discovery import DiscoveryRegistry
-
+from dharma.network.discovery import Discovery
 
 def test_announce():
-    d = DiscoveryRegistry()
-    d.announce("uni", "https://uni")
-    assert d.count() == 1
+    assert Discovery().announce("node")
 
+def test_name_a():
+    assert Discovery().announce("A")
 
-def test_resolve():
-    d = DiscoveryRegistry()
-    d.announce("uni", "https://uni")
-    assert d.resolve("uni") == "https://uni"
+def test_name_b():
+    assert Discovery().announce("B")
 
+def test_name_c():
+    assert Discovery().announce("C")
 
-def test_missing():
-    assert DiscoveryRegistry().resolve("x") is None
+def test_numeric():
+    assert Discovery().announce("123")
 
+def test_long():
+    assert Discovery().announce("node-001")
 
-def test_replace():
-    d = DiscoveryRegistry()
-    d.announce("uni", "a")
-    d.announce("uni", "b")
-    assert d.resolve("uni") == "b"
+def test_repeat():
+    d=Discovery()
+    assert d.announce("x")
+    assert d.announce("x")
 
-
-def test_count():
-    d = DiscoveryRegistry()
-    d.announce("a", "1")
-    d.announce("b", "2")
-    assert d.count() == 2
+def test_empty():
+    assert Discovery().announce("")

@@ -1,15 +1,11 @@
-from dataclasses import dataclass, field
+import socket
 
+PORT = 45671
 
-@dataclass
-class DiscoveryRegistry:
-    nodes: dict = field(default_factory=dict)
-
-    def announce(self, node_id, endpoint):
-        self.nodes[node_id] = endpoint
-
-    def resolve(self, node_id):
-        return self.nodes.get(node_id)
-
-    def count(self):
-        return len(self.nodes)
+class Discovery:
+    def announce(self, name):
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        s.sendto(name.encode(), ("255.255.255.255", PORT))
+        s.close()
+        return True
