@@ -7,6 +7,8 @@
 ## Tests Run
 
 - [ ] pytest
-- [ ] Documentation reviewed
+- [ ] docs reviewed
 
 ## Breaking Changes
+
+None / Yes
