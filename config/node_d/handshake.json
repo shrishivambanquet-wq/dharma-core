@@ -1,0 +1,14 @@
+{
+  "payload": {
+    "version": "1.0",
+    "type": "DRFC-0101-HANDSHAKE",
+    "node_id": "dharma:node:34fa47bfb71c3bbc",
+    "timestamp": 1789991350,
+    "capabilities": [
+      "drfc",
+      "authority",
+      "trust"
+    ]
+  },
+  "signature": "397b07d4a782ca2960c03e670f7fda75d87eb052453013e873bd0ba0550667804ca32588b437cdd0713e5b4b379a5e7fc7348e36b33a2d4cdbf3be2edad77f02"
+}
