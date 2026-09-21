@@ -1,12 +1,21 @@
 # Dharma Traceability Matrix
 
-| DRFC | Module | Test |
-|------|--------|------|
-|0027|wire.py|test_wire.py|
-|0031|handshake.py|test_handshake.py|
-|0046|session.py|test_session.py|
-|0072|quorum.py|test_quorum.py|
-|0084|federation.py|test_federation.py|
+## Rule
 
-Rule:
-Every canonical DRFC MUST map to at least one implementation module and one verification test.
+Every canonical DRFC MUST map to an implementation module and a verification test.
+
+| DRFC Range | Layer | Primary Module | Test Suite |
+|------------|-------|----------------|------------|
+|0001–0010|Constitution|spec|core|
+|0011–0025|Identity|identity|identity|
+|0026–0045|Network|network|network|
+|0046–0065|Sessions|session|session|
+|0066–0083|Consensus|consensus|consensus|
+|0084–0100|Federation/Security|federation/security|federation/security|
+
+## Verification Requirement
+
+- Every implementation MUST reference its governing DRFC.
+- Every test SHOULD reference the DRFC it validates.
+- Missing mappings MUST be treated as audit findings.
+

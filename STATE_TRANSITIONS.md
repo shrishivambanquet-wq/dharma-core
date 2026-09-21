@@ -1,4 +1,4 @@
-# Node State Machine
+# Dharma Node State Machine
 
 BOOTSTRAP
 → TRANSPORT_READY
@@ -8,14 +8,16 @@ BOOTSTRAP
 → SYNCING
 → ACTIVE
 
-Recovery:
+Recovery
 
 ACTIVE → RECOVERING
 RECOVERING → ACTIVE
 RECOVERING → QUARANTINED
 QUARANTINED → BOOTSTRAP
 
-Rules:
+Rules
+
 - Invalid signatures return to BOOTSTRAP.
 - Timeout enters RECOVERING.
-- Quarantine requires manual or protocol-authorized recovery.
+- Quarantine requires authorized recovery.
+
