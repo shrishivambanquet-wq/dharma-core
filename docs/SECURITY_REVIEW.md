@@ -1,9 +1,19 @@
-# Security Review Checklist
+# Dharma Security Review Checklist
 
-- Identity verification
+## Identity
+- Node ID verification
+- Ed25519 signature verification
+
+## Network
 - Handshake validation
-- Signature verification
 - Replay protection
+- Session expiry
+- Route validation
+
+## Consensus
+- Quorum verification
+- Finality verification
+
+## Federation
 - Trust anchor validation
-- Revocation flow
-- Packet validation
+- Snapshot verification

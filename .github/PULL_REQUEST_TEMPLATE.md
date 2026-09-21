@@ -6,8 +6,8 @@
 
 ## Tests Run
 
-- [ ] pytest
-- [ ] docs reviewed
+- [ ] pytest (868 expected)
+- [ ] Documentation reviewed
 
 ## Breaking Changes
 
