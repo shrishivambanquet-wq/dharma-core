@@ -1,33 +1,28 @@
 # Dharma Core v2.0
 
-A deterministic distributed protocol with immutable identity, authenticated communication and verifiable consensus.
+Python reference implementation for an experimental authenticated communication and trust negotiation protocol.
+
+![Tests](https://img.shields.io/badge/tests-868%20passing-brightgreen)
+![Release](https://img.shields.io/badge/release-v2.0.0--rc1-blue)
+![Contributions](https://img.shields.io/badge/contributions-welcome-orange)
+
+> Looking for the first external validator. Independent reviews, issues and pull requests are welcome.
 
 ## Quick Start
 
-git clone <repository-url>
+```bash
+git clone https://github.com/shrishivambanquet-wq/dharma-core
 cd dharma-core
-
 python -m venv .venv
 source .venv/bin/activate
-
 pip install -r requirements.txt
-
 pytest
 
-Expected: 868 tests passing.
 
-## Project Structure
+### Step 3: Commit aur Push
 
-- drfc/ — Canonical specifications
-- dharma/ — Reference implementation
-- tests/ — Verification suite
-- release/ — Release artifacts
-
-## Documentation
-
-- SPEC.md
-- PACKET_FORMAT.md
-- STATE_TRANSITIONS.md
-- ERROR_CODES.md
-- TRACEABILITY.md
-
+```bash
+git add README.md
+git commit -m "docs: improve README for contributors"
+git push
+eof
